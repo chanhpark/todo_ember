@@ -7,19 +7,20 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for 'head'}}
+    {{BASE_TAG}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/todo-ember.css">
-
-    {{content-for 'head-footer'}}
   </head>
   <body>
-    {{content-for 'body'}}
-
+    <script>
+      window.TodoEmberENV = {{ENV}};
+      window.EmberENV = window.TodoEmberENV.EmberENV;
+    </script>
     <script src="assets/vendor.js"></script>
     <script src="assets/todo-ember.js"></script>
-
-    {{content-for 'body-footer'}}
+    <script>
+      window.TodoEmber = require('todo-ember/app')['default'].create(TodoEmberENV.APP);
+    </script>
   </body>
 </html>
